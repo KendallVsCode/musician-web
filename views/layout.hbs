@@ -5,6 +5,24 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    {{{body}}}
+      <header>
+        <h1 class="logo">Logo</h1>
+        <input id="nav-toggle" type="checkbox" class="nav-toggle" />
+        <nav>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Media</a></li>
+            <li><a href="#">Events</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </nav>
+        <label for="nav-toggle" class="nav-toggle-label">
+          <span></span>
+        </label>
+      </header>
+      <div class="content">
+        {{{body}}}
+      </div>    
   </body>
 </html>
