@@ -15,6 +15,11 @@ body {
 	font-weight: 400;
 }
 
+.logo {  
+  font-family: "courier-prime", monospace;
+  color: white;
+}
+
 .content {
   height: 100vh;
   /* background-image: url(//unsplash.it/1000/1000); */
@@ -133,9 +138,7 @@ nav a:hover {
   }
 
   .logo {
-    grid-column: 2 / 1 span 1;
-    font-family: "courier-prime", monospace;
-    color: white;
+    grid-column: 2 / 1 span 1;   
   }
 
   nav {
