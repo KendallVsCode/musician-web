@@ -32,6 +32,22 @@ body {
   place-items: center;
 }
 
+#hero {    
+  text-align: center;
+}
+
+#everything {
+  position: relative;  
+  height: 10vh;
+  width: 50vw;
+}
+
+#everything2 {
+  position: relative;
+  left: 40px;
+  height: 10vh;
+  width: 50vw;
+} 
 
 /* Navigation styles start here */
 
@@ -128,6 +144,20 @@ nav a:hover {
 }
 
 @media screen and (min-width: 800px) {
+  #everything {
+    position: relative;  
+    height: 15vh;
+    width: 65vw;
+    animation: fill 0.5s ease forwards 5.5s;
+  }
+
+  #everything2 {
+    position: relative;
+    left: 40px;
+    height: 15vh;
+    width: 65vw;
+    animation: fill 0.5s ease forwards 5.5s;
+  } 
   .nav-toggle-label {
     display: none;
   }
@@ -196,17 +226,6 @@ footer {
 footer a {
   color: white;
   text-decoration: none;
-}
-
-#everything {
-  position: relative;
-  left: -100px;
-  top: 100px;
-}
-
-#everything2 {
-  position: relative;
-  top: -100px;
 }
 
 #everything path:nth-child(1) {
@@ -335,4 +354,12 @@ footer a {
   }
 }
 
+@keyframes fill {
+  from {
+    fill: transparent;
+  }
+  to {
+    fill: white;
+  }
+}
 
