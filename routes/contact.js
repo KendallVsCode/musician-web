@@ -7,26 +7,21 @@ router.get('/', function(req, res, next) {
     res.render('contact', { title: 'Contact' });
 });
 
-router.post('/', function(req, res, next) {
+router.post('/', function(req, res) {
     // var Kitten = req.Kitten;
     console.log(req.body); // PROBLEM: it returns empty, while I expect req.body
 
     var transporter = nodemailer.createTransport({
-      host: 'smtp.mail.yahoo.com',
-            port: 587,
-            service:'yahoo',
-            secure: false,
-            auth: {
-               user: 'kendalljones99@yahoo.com',
-               pass: 'pukvnuzghmjppyse'
-            },
-            debug: false,
-            logger: true 
+      service: 'yahoo',
+      auth: {
+        user: 'kendalljones99@yahoo.com',
+        pass: 'pukvnuzghmjppyse'
+      }
     });
     
     var mailOptions = {
       from: 'kendalljones99@yahoo.com',
-      to: 'kenmail99@yahoo.com',
+      to: 'kenmail99@gmail.com',
       subject: 'Sending Email using Node.js',
       text: 'That was easy!'
     };
@@ -40,7 +35,7 @@ router.post('/', function(req, res, next) {
     });
 
     //res.redirect('/meow_response');
-    next();
+    res.status(204).send();
 });
 
 module.exports = router;
