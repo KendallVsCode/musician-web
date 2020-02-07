@@ -34,8 +34,7 @@ router.post('/', function(req, res) {
       }
     });
 
-    //res.redirect('/meow_response');
-    res.status(204).send();
+    res.redirect('/contact');
 });
 
 module.exports = router;
