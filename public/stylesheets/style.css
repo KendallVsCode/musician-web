@@ -10,7 +10,7 @@
 
 body {
 	margin: 0;
-	background: #222;
+	background: #fff;
 	font-family: 'Work Sans', sans-serif;
 	font-weight: 400;
 }
@@ -21,23 +21,27 @@ body {
 }
 
 .content {
-  height: 100vh;
-  /* background-image: url(//unsplash.it/1000/1000); */
-  background-image: url(/images/background1.jpg);
-  background-color: whitesmoke;
-  background-blend-mode: luminosity;
-  opacity: 0.7;
-  background-size: cover;
+  height: 100vh;  
   display: grid;
   place-items: center;
 }
 
 #hero {    
+  background-image: url(/images/background1.jpg);
+  background-color: whitesmoke;
+  background-blend-mode: luminosity;
+  opacity: 0.7;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  /* display: grid;
+  place-items: center; */
   text-align: center;
 }
 
 #everything {
   position: relative;  
+  top: 40%;
   height: 10vh;
   width: 50vw;
   animation: fill 0.5s ease forwards 5.5s;
@@ -46,6 +50,7 @@ body {
 
 #everything2 {
   position: relative;
+  top: 38%;
   left: 40px;
   height: 10vh;
   width: 50vw;
@@ -149,6 +154,7 @@ nav a:hover {
 @media screen and (min-width: 800px) {
   #everything {
     position: relative;  
+    top: 40%;
     height: 15vh;
     width: 65vw;
     animation: fill 0.5s ease forwards 5.5s;
@@ -157,6 +163,7 @@ nav a:hover {
   #everything2 {
     position: relative;
     left: 40px;
+    top: 40%;
     height: 15vh;
     width: 65vw;
     animation: fill 0.5s ease forwards 5.5s;
