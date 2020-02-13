@@ -1,4 +1,30 @@
-<form action="/contact" id="searchForm" method="POST">
-  <input type="text" name="s" placeholder="Search...">
-  <input type="submit" value="Search">
-</form>
+<div class="form-content">
+  <div class="form-header">
+      <h1>Contact Ezra</h1>
+      <p><em>Want to speak with Ezra about recording your project or playing your event? Fill out
+        this form.</em></p>
+    </div>
+    <form action="/" method="get" class="contact-form">
+      <div class="form-row">
+        <label for="full-name">Name</label>
+        <input id="full-name" name="full-name" type="text" />
+      </div>
+      <div class="form-row">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" placeholder="joe@gmail.com" />
+      </div>
+      <fieldset class="legacy-form-row">
+        <legend>Type of Service</legend>
+        <input id="service-type-1"
+          name="service-type"
+          type="radio"
+          value="recording" />
+        <label for="service-type-1" class="radio-label">Recording</label>
+        <input id="service-type-2"
+          name="service-type"
+          type="radio"
+          value="performance" checked />
+        <label for="service-type-2" class="radio-label">Performance</label>
+      </fieldset>
+    </form>
+</div>
