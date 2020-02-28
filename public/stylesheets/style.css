@@ -15,6 +15,15 @@ body {
 	font-weight: 400;
 }
 
+fieldset {  
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  padding-block-start: 0;
+  padding-inline-start: 0;
+  padding-inline-end: 0;
+  padding-block-end: 0;
+  
+}
 .logo {  
   font-family: "courier-prime", monospace;
   color: white;
@@ -234,6 +243,34 @@ nav a:hover {
   float: left;
 }
 
+.form-row select {
+  width: 100%;
+  padding: 5px;
+  font-size: 14px;
+  -webkit-appearance: none;
+}
+
+.form-row textarea {
+  font-family: "Helvetica", "Arial", sans-serif;
+  font-size: 14px;
+  border: 1px solid #D6D9DC;
+  border-radius: 3px;
+  min-height: 200px;
+  margin-bottom: 10px;
+  padding: 7px;
+  resize: none;
+}
+
+.form-row .instructions {
+  color: #999999;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+.form-row .checkbox-label {
+  margin-bottom: 0;
+}
+
 @media screen and (min-width: 800px) {
     #everything {
       position: relative;  
@@ -328,6 +365,26 @@ nav a:hover {
       width: 120px;
       margin-top: 7px;
       padding-right: 20px;
+    }
+
+    .legacy-form-row {
+      margin-bottom: 10px;
+    }
+
+    .legacy-form-row legend {
+      width: 120px;
+      text-align: right;
+      padding-right: 20px;
+      float: left;
+    }
+
+    .form-row .instructions {
+      margin-left: 120px;
+    }
+
+    .form-row .checkbox-label {
+      margin-left: 120px;
+      width: auto;
     }
 }
 
