@@ -12,8 +12,7 @@ body {
 	margin: 0;
 	background: #fff;
 	font-family: 'Work Sans', sans-serif;
-  font-weight: 400;
-  padding-top: 350px; 
+  font-weight: 400;  
 }
 
 fieldset {  
@@ -273,8 +272,12 @@ nav a:hover {
   margin-bottom: 0;
 }
 
+#spacer {
+  padding-top: 350px; 
+}
+
 @media screen and (min-width: 800px) {
-  body {   
+  #spacer {   
     padding-top: 250px; 
   }
     #everything {
