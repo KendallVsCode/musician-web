@@ -12,7 +12,8 @@ body {
 	margin: 0;
 	background: #fff;
 	font-family: 'Work Sans', sans-serif;
-	font-weight: 400;
+  font-weight: 400;
+  padding-top: 350px; 
 }
 
 fieldset {  
@@ -70,6 +71,7 @@ fieldset {
 /* Navigation styles start here */
 
 header {
+  top: 0;
   background: var(--background);
   text-align: center;
   position: fixed;
@@ -272,6 +274,9 @@ nav a:hover {
 }
 
 @media screen and (min-width: 800px) {
+  body {   
+    padding-top: 250px; 
+  }
     #everything {
       position: relative;  
       top: 40%;
