@@ -166,6 +166,7 @@ nav a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top:950px;
 }
 
 .form-header {
@@ -272,13 +273,9 @@ nav a:hover {
   margin-bottom: 0;
 }
 
-#spacer {
-  padding-top: 350px; 
-}
-
 @media screen and (min-width: 800px) {
-  #spacer {   
-    padding-top: 250px; 
+  form-content {    
+    margin-top:750px;
   }
     #everything {
       position: relative;  
