@@ -1,0 +1,54 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "D365 F&O JAXMouseOpsPenManagementService",
+    "description": "Custom F&O service operations used by MouseOps. Auth (OAuth2 client credentials) is handled by the IDMC REST V2 connection.",
+    "version": "1.0"
+  },
+  "host": "jax-test.sandbox.operations.dynamics.com",
+  "schemes": [ "https" ],
+  "consumes": [ "application/json" ],
+  "produces": [ "application/json" ],
+  "paths": {
+    "/api/services/JAXMouseOpsServiceGroup/JAXMouseOpsPenManagementService/getStrainsByRoom": {
+      "post": {
+        "operationId": "getStrainsByRoom",
+        "summary": "Returns the strains in a mouse room",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": { "$ref": "#/definitions/StrainsByRoomRequest" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of strains",
+            "schema": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/Strain" }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "StrainsByRoomRequest": {
+      "type": "object",
+      "required": [ "mouseroom" ],
+      "properties": {
+        "mouseroom": { "type": "string", "description": "Mouse room ID" }
+      }
+    },
+    "Strain": {
+      "type": "object",
+      "properties": {
+        "Id": { "type": "string", "description": "Strain ID, e.g. 000664" },
+        "Name": { "type": "string", "description": "Strain name, e.g. C57BL/6J" },
+        "Manager": { "type": "string", "description": "Often empty" }
+      }
+    }
+  }
+}
