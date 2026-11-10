@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "D365 F&O JAXMouseOpsPenManagementService (raw response)",
-    "description": "Same operation as the original, but the 200 response is declared as a plain string so Informatica does not generate a JSON parser for it. The response text is cleaned (the $id keys removed) and parsed in the mapping instead.",
+    "title": "D365 F&O JAXMouseOpsPenManagementService (raw response, object variant)",
+    "description": "Fallback to try if the v4-string file does not return the response as text. The 200 response is a free-form object with no declared properties.",
     "version": "1.3"
   },
   "host": "jax-test.sandbox.operations.dynamics.com",
@@ -13,7 +13,7 @@
     "/api/services/JAXMouseOpsServiceGroup/JAXMouseOpsPenManagementService/getStrainsByRoom": {
       "post": {
         "operationId": "getStrainsByRoom",
-        "summary": "Returns the strains in a mouse room (raw response text)",
+        "summary": "Returns the strains in a mouse room (free-form response)",
         "parameters": [
           {
             "name": "body",
@@ -24,8 +24,8 @@
         ],
         "responses": {
           "200": {
-            "description": "Raw response text (JSON array of strains)",
-            "schema": { "type": "string" }
+            "description": "Free-form response",
+            "schema": { "type": "object" }
           }
         }
       }
