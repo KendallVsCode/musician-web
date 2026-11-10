@@ -3,7 +3,7 @@
   "info": {
     "title": "D365 F&O JAXMouseOpsPenManagementService",
     "description": "Custom F&O service operations used by MouseOps. Auth (OAuth2 client credentials) is handled by the IDMC REST V2 connection.",
-    "version": "1.1"
+    "version": "1.2"
   },
   "host": "jax-test.sandbox.operations.dynamics.com",
   "schemes": [ "https" ],
@@ -14,8 +14,6 @@
       "post": {
         "operationId": "getStrainsByRoom",
         "summary": "Returns the strains in a mouse room",
-        "consumes": [ "application/json" ],
-        "produces": [ "application/json" ],
         "parameters": [
           {
             "name": "body",
@@ -31,10 +29,6 @@
               "type": "array",
               "items": { "$ref": "#/definitions/Strain" }
             }
-          },
-          "400": {
-            "description": "D365 service error (for example, a request body that does not contain 'mouseroom')",
-            "schema": { "$ref": "#/definitions/D365Error" }
           }
         }
       }
@@ -45,23 +39,16 @@
       "type": "object",
       "required": [ "mouseroom" ],
       "properties": {
-        "mouseroom": { "type": "string", "description": "Mouse room ID, e.g. MP14-PD" }
+        "mouseroom": { "type": "string", "description": "Mouse room ID" }
       }
     },
     "Strain": {
       "type": "object",
       "properties": {
+        "$id": { "type": "string", "description": "D365 serializer object id (1, 2, 3...); present on every item" },
         "Id": { "type": "string", "description": "Strain ID, e.g. 000664" },
         "Name": { "type": "string", "description": "Strain name, e.g. C57BL/6J" },
         "Manager": { "type": "string", "description": "Often empty" }
-      }
-    },
-    "D365Error": {
-      "type": "object",
-      "properties": {
-        "Message": { "type": "string" },
-        "ExceptionType": { "type": "string" },
-        "ActivityId": { "type": "string" }
       }
     }
   }
