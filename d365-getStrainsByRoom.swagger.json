@@ -1,118 +1,54 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "D365 F&O JAXMouseOpsPenManagementService (SOAP via REST V2)",
-    "description": "Calls the SOAP endpoint of the same service group with a hand-built SOAP 1.1 envelope, so the response is XML (no $id keys). Contract taken from service.wsdl.",
-    "version": "1.0"
+    "title": "D365 F&O JAXMouseOpsPenManagementService",
+    "description": "Custom F&O service operations used by MouseOps. Auth (OAuth2 client credentials) is handled by the IDMC REST V2 connection.",
+    "version": "1.2"
   },
   "host": "jax-test.sandbox.operations.dynamics.com",
   "schemes": [ "https" ],
-  "consumes": [ "text/xml" ],
-  "produces": [ "text/xml" ],
+  "consumes": [ "application/json" ],
+  "produces": [ "application/json" ],
   "paths": {
-    "/soap/services/JAXMouseOpsServiceGroup": {
+    "/api/services/JAXMouseOpsServiceGroup/JAXMouseOpsPenManagementService/getStrainsByRoom": {
       "post": {
-        "operationId": "getStrainsByRoomSoap",
-        "summary": "getStrainsByRoom over SOAP",
-        "consumes": [ "text/xml" ],
-        "produces": [ "text/xml" ],
+        "operationId": "getStrainsByRoom",
+        "summary": "Returns the strains in a mouse room",
         "parameters": [
-          {
-            "name": "SOAPAction",
-            "in": "header",
-            "required": true,
-            "type": "string",
-            "default": "\"http://tempuri.org/JAXMouseOpsPenManagementService/getStrainsByRoom\""
-          },
           {
             "name": "body",
             "in": "body",
             "required": true,
-            "schema": { "$ref": "#/definitions/RequestEnvelope" }
+            "schema": { "$ref": "#/definitions/StrainsByRoomRequest" }
           }
         ],
         "responses": {
           "200": {
-            "description": "SOAP response envelope",
-            "schema": { "$ref": "#/definitions/ResponseEnvelope" }
+            "description": "List of strains",
+            "schema": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/Strain" }
+            }
           }
         }
       }
     }
   },
   "definitions": {
-    "RequestEnvelope": {
+    "StrainsByRoomRequest": {
       "type": "object",
-      "xml": { "name": "Envelope", "namespace": "http://schemas.xmlsoap.org/soap/envelope/", "prefix": "s" },
+      "required": [ "mouseroom" ],
       "properties": {
-        "Body": { "$ref": "#/definitions/RequestBody" }
-      }
-    },
-    "RequestBody": {
-      "type": "object",
-      "xml": { "name": "Body", "namespace": "http://schemas.xmlsoap.org/soap/envelope/", "prefix": "s" },
-      "properties": {
-        "getStrainsByRoom": { "$ref": "#/definitions/GetStrainsByRoom" }
-      }
-    },
-    "GetStrainsByRoom": {
-      "type": "object",
-      "xml": { "name": "getStrainsByRoom", "namespace": "http://tempuri.org" },
-      "properties": {
-        "mouseroom": {
-          "type": "string",
-          "xml": { "name": "mouseroom", "namespace": "http://tempuri.org" }
-        }
-      }
-    },
-    "ResponseEnvelope": {
-      "type": "object",
-      "xml": { "name": "Envelope", "namespace": "http://schemas.xmlsoap.org/soap/envelope/", "prefix": "s" },
-      "properties": {
-        "Body": { "$ref": "#/definitions/ResponseBody" }
-      }
-    },
-    "ResponseBody": {
-      "type": "object",
-      "xml": { "name": "Body", "namespace": "http://schemas.xmlsoap.org/soap/envelope/", "prefix": "s" },
-      "properties": {
-        "getStrainsByRoomResponse": { "$ref": "#/definitions/GetStrainsByRoomResponse" }
-      }
-    },
-    "GetStrainsByRoomResponse": {
-      "type": "object",
-      "xml": { "name": "getStrainsByRoomResponse", "namespace": "http://tempuri.org" },
-      "properties": {
-        "result": { "$ref": "#/definitions/Result" }
-      }
-    },
-    "Result": {
-      "type": "object",
-      "xml": { "name": "result", "namespace": "http://tempuri.org" },
-      "properties": {
-        "JAXMOLookupItemContract": {
-          "type": "array",
-          "items": { "$ref": "#/definitions/Strain" },
-          "xml": { "name": "JAXMOLookupItemContract", "namespace": "http://schemas.datacontract.org/2004/07/Dynamics.AX.Application", "prefix": "a" }
-        }
+        "mouseroom": { "type": "string", "description": "Mouse room ID" }
       }
     },
     "Strain": {
       "type": "object",
-      "xml": { "name": "JAXMOLookupItemContract", "namespace": "http://schemas.datacontract.org/2004/07/Dynamics.AX.Application", "prefix": "a" },
       "properties": {
-        "Id": {
-          "type": "string",
-          "xml": { "name": "Id", "namespace": "http://schemas.datacontract.org/2004/07/Dynamics.AX.Application", "prefix": "a" }
-        },
-        "Manager": {
-          "type": "string",
-          "xml": { "name": "Manager", "namespace": "http://schemas.datacontract.org/2004/07/Dynamics.AX.Application", "prefix": "a" }
-        },
-        "Name": {
-          "type": "string",
-          "xml": { "name": "Name", "namespace": "http://schemas.datacontract.org/2004/07/Dynamics.AX.Application", "prefix": "a" }
-        }
+        "$id": { "type": "string", "description": "D365 serializer object id (1, 2, 3...); present on every item" },
+        "Id": { "type": "string", "description": "Strain ID, e.g. 000664" },
+        "Name": { "type": "string", "description": "Strain name, e.g. C57BL/6J" },
+        "Manager": { "type": "string", "description": "Often empty" }
       }
     }
   }
