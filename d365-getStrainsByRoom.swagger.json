@@ -1,9 +1,9 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "D365 F&O JAXMouseOpsPenManagementService",
-    "description": "Custom F&O service operations used by MouseOps. Auth (OAuth2 client credentials) is handled by the IDMC REST V2 connection.",
-    "version": "1.2"
+    "title": "D365 F&O JAXMouseOpsPenManagementService (raw response)",
+    "description": "Same operation as the original, but the 200 response is declared as a plain string so Informatica does not generate a JSON parser for it. The response text is cleaned (the $id keys removed) and parsed in the mapping instead.",
+    "version": "1.3"
   },
   "host": "jax-test.sandbox.operations.dynamics.com",
   "schemes": [ "https" ],
@@ -13,7 +13,7 @@
     "/api/services/JAXMouseOpsServiceGroup/JAXMouseOpsPenManagementService/getStrainsByRoom": {
       "post": {
         "operationId": "getStrainsByRoom",
-        "summary": "Returns the strains in a mouse room",
+        "summary": "Returns the strains in a mouse room (raw response text)",
         "parameters": [
           {
             "name": "body",
@@ -24,11 +24,8 @@
         ],
         "responses": {
           "200": {
-            "description": "List of strains",
-            "schema": {
-              "type": "array",
-              "items": { "$ref": "#/definitions/Strain" }
-            }
+            "description": "Raw response text (JSON array of strains)",
+            "schema": { "type": "string" }
           }
         }
       }
@@ -40,15 +37,6 @@
       "required": [ "mouseroom" ],
       "properties": {
         "mouseroom": { "type": "string", "description": "Mouse room ID" }
-      }
-    },
-    "Strain": {
-      "type": "object",
-      "properties": {
-        "$id": { "type": "string", "description": "D365 serializer object id (1, 2, 3...); present on every item" },
-        "Id": { "type": "string", "description": "Strain ID, e.g. 000664" },
-        "Name": { "type": "string", "description": "Strain name, e.g. C57BL/6J" },
-        "Manager": { "type": "string", "description": "Often empty" }
       }
     }
   }
